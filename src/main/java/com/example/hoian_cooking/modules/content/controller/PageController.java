@@ -1,12 +1,12 @@
 package com.example.hoian_cooking.modules.content.controller;
 
 import com.example.hoian_cooking.common.dto.ApiResponse;
+import com.example.hoian_cooking.common.dto.PagedResponse;
 import com.example.hoian_cooking.modules.content.dto.request.PageRequest;
 import com.example.hoian_cooking.modules.content.dto.response.PageResponse;
 import com.example.hoian_cooking.modules.content.service.PageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +18,12 @@ public class PageController {
     private final PageService service;
 
     @GetMapping
-    public ApiResponse<Page<PageResponse>> getAll(
+    public PagedResponse<PageResponse> getAll(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String slug,
             @RequestParam(required = false) Long pageTypeId,
             Pageable pageable) {
-        return ApiResponse.success(service.getAll(title, slug, pageTypeId, pageable));
+        return PagedResponse.fromPage(service.getAll(title, slug, pageTypeId, pageable));
     }
 
     @GetMapping("/{id}")

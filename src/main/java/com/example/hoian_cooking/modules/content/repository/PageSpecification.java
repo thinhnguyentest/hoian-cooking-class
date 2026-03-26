@@ -8,21 +8,23 @@ public class PageSpecification {
 
     public static Specification<Page> filter(String title, String slug, Long pageTypeId) {
         return (root, query, cb) -> {
-            Specification<Page> spec = Specification.where((Specification<Page>) null);
+            Specification<Page> spec = null;
 
             if (StringUtils.hasText(title)) {
-                spec = spec.and((r, q, c) -> c.like(c.lower(r.get("title")), "%" + title.toLowerCase() + "%"));
+                spec = Specification.where((r, q, c) -> c.like(c.lower(r.get("title")), "%" + title.toLowerCase() + "%"));
             }
 
             if (StringUtils.hasText(slug)) {
-                spec = spec.and((r, q, c) -> c.equal(r.get("slug"), slug));
+                Specification<Page> slugSpec = (r, q, c) -> c.equal(r.get("slug"), slug);
+                spec = spec == null ? Specification.where(slugSpec) : spec.and(slugSpec);
             }
 
             if (pageTypeId != null) {
-                spec = spec.and((r, q, c) -> c.equal(r.get("pageType").get("id"), pageTypeId));
+                Specification<Page> typeSpec = (r, q, c) -> c.equal(r.get("pageType").get("id"), pageTypeId);
+                spec = spec == null ? Specification.where(typeSpec) : spec.and(typeSpec);
             }
 
-            return spec.toPredicate(root, query, cb);
+            return spec != null ? spec.toPredicate(root, query, cb) : cb.conjunction();
         };
     }
 }
