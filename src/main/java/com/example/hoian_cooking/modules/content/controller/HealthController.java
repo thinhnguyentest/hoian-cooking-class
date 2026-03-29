@@ -3,21 +3,27 @@ package com.example.hoian_cooking.modules.content.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.OffsetDateTime;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/health")
 @Slf4j
 public class HealthController {
 
     private static final OffsetDateTime START_TIME = OffsetDateTime.now();
 
-    // schedule
-    @GetMapping
+    @GetMapping("/")
+    public Map<String, String> index() {
+        return Map.of(
+            "message", "Hoi An Cooking Class API is running.",
+            "status", "ALIVE",
+            "health_check", "/api/v1/health"
+        );
+    }
+
+    @GetMapping("/api/v1/health")
     public ResponseEntity<Map<String, Object>> healthCheck() {
         log.info("Health check endpoint hit at {}", OffsetDateTime.now());
         
