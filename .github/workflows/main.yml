@@ -32,4 +32,4 @@ jobs:
       - name: Trigger deploy on Render
         if: success()
         run: |
-          curl -X POST https://api.render.com/deploy/srv-d045p0adbo4c73e9iv9g?key=xtiRl3rX5lo
+          curl -X POST https://api.render.com/deploy/srv-d74dcgqdbo4c738quc7g?key=64Kk8TezYXo
