@@ -16,6 +16,7 @@ public class HealthController {
 
     private static final OffsetDateTime START_TIME = OffsetDateTime.now();
 
+    // schedule
     @GetMapping
     public ResponseEntity<Map<String, Object>> healthCheck() {
         log.info("Health check endpoint hit at {}", OffsetDateTime.now());
