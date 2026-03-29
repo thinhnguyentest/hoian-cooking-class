@@ -31,6 +31,11 @@ public class PageController {
         return ApiResponse.success(service.getById(id));
     }
 
+    @GetMapping("/by-slug")
+    public ApiResponse<PageResponse> getBySlug(@RequestParam String slug) {
+        return ApiResponse.success(service.getBySlug(slug));
+    }
+
     @PostMapping
     public ApiResponse<PageResponse> create(@Valid @RequestBody PageRequest request) {
         return ApiResponse.success(service.create(request));

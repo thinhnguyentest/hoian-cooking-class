@@ -8,5 +8,9 @@
     <include file="db/changelog/migrations/001-initial-schema.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/002-module-1-tables.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/003-seed-data.sql" relativeToChangelogFile="false"/>
-
+    <include file="db/changelog/migrations/004-content-refinement.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/005-seed-images-and-content.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/006-supplement-images.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/007-seed-media-gallery.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/008-extended-seed-data.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>

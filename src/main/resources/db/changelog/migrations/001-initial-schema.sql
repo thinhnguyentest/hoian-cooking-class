@@ -24,7 +24,7 @@ INSERT INTO page_types (name, code, description) VALUES
 ('Making Coffee', 'MAKING_COFFEE', 'Making coffee page type');
 
 INSERT INTO pages (page_type_id, title, description, slug) VALUES 
-(1, 'Cooking Class', 'Learn to cook traditional food', '/'),
-(2, 'Food Tour', 'Explore street food in Hoi An', '/food-tour'),
-(3, 'Making Lantern', 'Create your own lantern', '/making-lantern'),
-(4, 'Making Coffee', 'Learn to make Vietnamese coffee', '/making-coffee-class');
+(1, 'The Art of Vietnamese Flavor', 'A culinary journey through the heart of Hoi An, discovering the balance of texture, aroma, and taste.', '/'),
+(2, 'Authentic Hoi An Street Food Tour', 'Journey through hidden alleyways and savor the unique flavors that define our ancient town''s culinary heritage.', '/food-tour'),
+(3, 'Making Lantern', 'Craft your own traditional silk lantern with local artisans.', '/making-lantern'),
+(4, 'Making Coffee', 'Master the art of traditional Vietnamese coffee making in the heart of Hoi An.', '/making-coffee-class');

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 public interface PageService {
     Page<PageResponse> getAll(String title, String slug, Long pageTypeId, Pageable pageable);
     PageResponse getById(Long id);
+    PageResponse getBySlug(String slug);
     PageResponse create(PageRequest request);
     PageResponse update(Long id, PageRequest request);
     void delete(Long id);

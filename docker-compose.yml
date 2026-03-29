@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: postgres-hoian
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hoian_cooking}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-12341234}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    labels:
+      - "org.springframework.boot.service-connection=postgres"
+
+  app:
+    build: .
+    container_name: hoian-backend
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      # Database Configuration
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:postgresql://postgres:5432/hoian_cooking}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-12341234}
+      
+      # Liquibase Configuration
+      SPRING_LIQUIBASE_CHANGE_LOG: ${SPRING_LIQUIBASE_CHANGE_LOG:-classpath:/db/changelog/db.changelog-master.xml}
+      SPRING_LIQUIBASE_ENABLED: ${SPRING_LIQUIBASE_ENABLED:-true}
+      
+      # JPA/Hibernate Configuration
+      SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO:-none}
+      SPRING_JPA_SHOW_SQL: ${SPRING_JPA_SHOW_SQL:-true}
+      SPRING_JPA_DATABASE_PLATFORM: ${SPRING_JPA_DATABASE_PLATFORM:-org.hibernate.dialect.PostgreSQLDialect}
+      
+      # Server Configuration
+      SERVER_PORT: ${SERVER_PORT:-8080}
+      
+      # Placeholder for Security (if needed later)
+      # APP_JWT_SECRET: ${APP_JWT_SECRET:-8g884e7VfB5CLneukGSmREnYowm6jyvTsBmcbAXm2UgBituYoBVcC1FEISw0439o/FZseqhXJRGxuzWO7X4ogw==}
+
+volumes:
+  pg-data:
