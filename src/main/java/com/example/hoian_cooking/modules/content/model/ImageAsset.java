@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Image {
+public class ImageAsset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +28,7 @@ public class Image {
 
     @Column(name = "alt_text")
     private String altText;
+
+    @Column(name = "public_id")
+    private String publicId;
 }

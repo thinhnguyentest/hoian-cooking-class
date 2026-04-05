@@ -4,12 +4,17 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PageRequest {
 
@@ -25,4 +30,8 @@ public class PageRequest {
     @NotBlank(message = "Slug is required")
     @Size(max = 255)
     String slug;
+
+    List<PageContentRequest> contents;
+    List<MenuRequest> menus;
+    List<ImageRequest> images;
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/pages")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class PageController {
 
     private final PageService service;

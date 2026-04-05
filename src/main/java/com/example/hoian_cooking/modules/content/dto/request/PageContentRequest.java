@@ -1,8 +1,11 @@
 package com.example.hoian_cooking.modules.content.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Data
@@ -11,7 +14,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PageContentRequest {
-    @NotNull(message = "Page ID is required")
+    Long id;
+
     Long pageId;
 
     @NotBlank(message = "Section type is required")

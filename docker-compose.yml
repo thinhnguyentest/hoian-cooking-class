@@ -27,19 +27,23 @@ services:
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:postgresql://postgres:5432/hoian_cooking}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-12341234}
-      
+
       # Liquibase Configuration
       SPRING_LIQUIBASE_CHANGE_LOG: ${SPRING_LIQUIBASE_CHANGE_LOG:-classpath:/db/changelog/db.changelog-master.xml}
       SPRING_LIQUIBASE_ENABLED: ${SPRING_LIQUIBASE_ENABLED:-true}
-      
+
       # JPA/Hibernate Configuration
       SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO:-none}
       SPRING_JPA_SHOW_SQL: ${SPRING_JPA_SHOW_SQL:-true}
       SPRING_JPA_DATABASE_PLATFORM: ${SPRING_JPA_DATABASE_PLATFORM:-org.hibernate.dialect.PostgreSQLDialect}
-      
+
       # Server Configuration
       SERVER_PORT: ${SERVER_PORT:-8080}
-      
+
+      # Cloudinary Configuration
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME:-ds6fxaiqd}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY:-131272294536855}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-8yOP2BkLtGeYFjULYEk59IWjZrA}
       # Placeholder for Security (if needed later)
       # APP_JWT_SECRET: ${APP_JWT_SECRET:-8g884e7VfB5CLneukGSmREnYowm6jyvTsBmcbAXm2UgBituYoBVcC1FEISw0439o/FZseqhXJRGxuzWO7X4ogw==}
 

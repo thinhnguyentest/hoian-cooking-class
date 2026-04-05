@@ -3,10 +3,11 @@ package com.example.hoian_cooking.modules.content.service.impl;
 import com.example.hoian_cooking.common.exception.AppException;
 import com.example.hoian_cooking.common.exception.ErrorCode;
 import com.example.hoian_cooking.modules.content.dto.response.ImageResponse;
-import com.example.hoian_cooking.modules.content.model.Image;
+import com.example.hoian_cooking.modules.content.model.ImageAsset;
 import com.example.hoian_cooking.modules.content.model.Page;
 import com.example.hoian_cooking.modules.content.repository.ImageRepository;
 import com.example.hoian_cooking.modules.content.repository.PageRepository;
+import com.example.hoian_cooking.modules.content.service.CloudinaryService;
 import com.example.hoian_cooking.modules.content.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,16 @@ public class ImageServiceImpl implements ImageService {
 
     private final ImageRepository repository;
     private final PageRepository pageRepository;
+    private final CloudinaryService cloudinaryService;
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ImageResponse> getAll() {
+        return repository.findAll()
+                .stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -33,15 +44,16 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     @Transactional
-    public ImageResponse create(Long pageId, String url, String sourceType, String altText) {
+    public ImageResponse create(Long pageId, String url, String sourceType, String altText, String publicId) {
         Page page = pageRepository.findById(pageId)
                 .orElseThrow(() -> new AppException(ErrorCode.NOT_FOUND, "Page not found"));
         
-        Image image = Image.builder()
+        ImageAsset image = ImageAsset.builder()
                 .page(page)
                 .url(url)
                 .sourceType(sourceType)
                 .altText(altText)
+                .publicId(publicId)
                 .build();
                 
         return mapToResponse(repository.save(image));
@@ -50,19 +62,28 @@ public class ImageServiceImpl implements ImageService {
     @Override
     @Transactional
     public void delete(Long id) {
-        if (!repository.existsById(id)) {
-            throw new AppException(ErrorCode.NOT_FOUND, "Image not found");
+        ImageAsset image = repository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.NOT_FOUND, "Image not found"));
+        
+        if (image.getPublicId() != null) {
+            try {
+                cloudinaryService.delete(image.getPublicId());
+            } catch (Exception e) {
+                // Log and continue
+                System.err.println("Failed to delete image from Cloudinary: " + image.getPublicId());
+            }
         }
-        repository.deleteById(id);
+        repository.delete(image);
     }
 
-    private ImageResponse mapToResponse(Image entity) {
+    private ImageResponse mapToResponse(ImageAsset entity) {
         return ImageResponse.builder()
                 .id(entity.getId())
                 .pageId(entity.getPage().getId())
                 .url(entity.getUrl())
                 .sourceType(entity.getSourceType())
                 .altText(entity.getAltText())
+                .publicId(entity.getPublicId())
                 .build();
     }
 }

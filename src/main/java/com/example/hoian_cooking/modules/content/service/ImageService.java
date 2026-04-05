@@ -5,7 +5,8 @@ import com.example.hoian_cooking.modules.content.dto.response.ImageResponse;
 import java.util.List;
 
 public interface ImageService {
+    List<ImageResponse> getAll();
     List<ImageResponse> getByPageId(Long pageId);
-    ImageResponse create(Long pageId, String url, String sourceType, String altText);
+    ImageResponse create(Long pageId, String url, String sourceType, String altText, String publicId);
     void delete(Long id);
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/page-types")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class PageTypeController {
 
     private final PageTypeService service;
