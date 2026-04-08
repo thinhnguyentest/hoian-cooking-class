@@ -1,3 +1,6 @@
+-- liquibase formatted sql
+
+-- changeset thinh:10
 -- Seed content for Food Tour (Page ID: 2)
 INSERT INTO page_contents (page_id, section_type, title, content, sort_order) VALUES 
 (2, 'EXPERIENCE', 'A Culinary Soul Journey Through Hoi An', 'Hoi An is more than just an ancient town with its charming yellow heritage houses – it''s a vibrant crossroads where Vietnamese, Chinese, and Japanese culinary traditions have merged over centuries, creating distinctive flavors found nowhere else in the world.', 1),

@@ -13,13 +13,8 @@
     <include file="db/changelog/migrations/006-supplement-images.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/007-seed-media-gallery.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/008-extended-seed-data.sql" relativeToChangelogFile="false"/>
-    <changeSet id="9" author="antigravity">
-        <sqlFile path="db/changelog/migrations/009-add-public-id-to-images.sql" relativeToChangelogFile="false"/>
-    </changeSet>
-    <changeSet id="10" author="antigravity">
-        <sqlFile path="db/changelog/migrations/010-seed-full-content.sql" relativeToChangelogFile="false"/>
-    </changeSet>
-    <changeSet id="11" author="antigravity">
-        <sqlFile path="db/changelog/migrations/011-reseed-all-content.sql" relativeToChangelogFile="false"/>
-    </changeSet>
+    <include file="db/changelog/migrations/009-add-public-id-to-images.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/010-seed-full-content.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/011-reseed-all-content.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/012-add-system-settings.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>
