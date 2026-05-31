@@ -91,6 +91,9 @@ public class PageServiceImpl implements PageService {
         page.setTitle(request.getTitle());
         page.setDescription(request.getDescription());
         page.setSlug(request.getSlug());
+        page.setDuration(request.getDuration());
+        page.setGroupSize(request.getGroupSize());
+        page.setCancellation(request.getCancellation());
 
         Page savedPage = repository.save(page);
         
@@ -230,6 +233,9 @@ public class PageServiceImpl implements PageService {
                 .title(entity.getTitle())
                 .description(entity.getDescription())
                 .slug(entity.getSlug())
+                .duration(entity.getDuration())
+                .groupSize(entity.getGroupSize())
+                .cancellation(entity.getCancellation())
                 .build();
 
         response.setContents(pageContentRepository.findByPageIdOrderBySortOrder(entity.getId())
@@ -276,6 +282,9 @@ public class PageServiceImpl implements PageService {
                 .title(request.getTitle())
                 .description(request.getDescription())
                 .slug(request.getSlug())
+                .duration(request.getDuration())
+                .groupSize(request.getGroupSize())
+                .cancellation(request.getCancellation())
                 .build();
     }
 }

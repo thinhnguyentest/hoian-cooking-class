@@ -31,6 +31,10 @@ public class PageRequest {
     @Size(max = 255)
     String slug;
 
+    String duration;
+    String groupSize;
+    String cancellation;
+
     List<PageContentRequest> contents;
     List<MenuRequest> menus;
     List<ImageRequest> images;

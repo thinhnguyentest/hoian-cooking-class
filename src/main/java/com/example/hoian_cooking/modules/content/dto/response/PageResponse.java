@@ -17,6 +17,9 @@ public class PageResponse {
     String title;
     String description;
     String slug;
+    String duration;
+    String groupSize;
+    String cancellation;
 
     // Aggregated content
     List<PageContentResponse> contents;

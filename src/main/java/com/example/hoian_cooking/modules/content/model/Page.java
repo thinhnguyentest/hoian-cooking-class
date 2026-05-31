@@ -27,4 +27,11 @@ public class Page {
 
     @Column(nullable = false, unique = true)
     private String slug;
+
+    private String duration;
+
+    @Column(name = "group_size")
+    private String groupSize;
+
+    private String cancellation;
 }
