@@ -18,4 +18,5 @@
     <include file="db/changelog/migrations/011-reseed-all-content.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/012-add-system-settings.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/013-add-page-metadata.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/014-add-page-price.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>

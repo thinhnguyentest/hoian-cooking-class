@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 @Data
 @Builder
@@ -20,6 +21,7 @@ public class PageResponse {
     String duration;
     String groupSize;
     String cancellation;
+    BigDecimal price;
 
     // Aggregated content
     List<PageContentResponse> contents;

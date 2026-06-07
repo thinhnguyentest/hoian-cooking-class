@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import java.util.List;
+import java.math.BigDecimal;
 
 @Data
 @Builder
@@ -34,6 +35,7 @@ public class PageRequest {
     String duration;
     String groupSize;
     String cancellation;
+    BigDecimal price;
 
     List<PageContentRequest> contents;
     List<MenuRequest> menus;

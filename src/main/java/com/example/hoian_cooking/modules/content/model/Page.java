@@ -2,6 +2,7 @@ package com.example.hoian_cooking.modules.content.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "pages")
@@ -34,4 +35,6 @@ public class Page {
     private String groupSize;
 
     private String cancellation;
+
+    private BigDecimal price;
 }
