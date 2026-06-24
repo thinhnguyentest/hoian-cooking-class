@@ -17,22 +17,20 @@ public class HealthController {
     @GetMapping("/")
     public Map<String, String> index() {
         return Map.of(
-            "message", "Hoi An Cooking Class API is running.",
-            "status", "ALIVE",
-            "health_check", "/api/v1/health"
-        );
+                "message a", "Hoi An Cooking Class API is running.",
+                "status", "ALIVE",
+                "health_check", "/api/v1/health");
     }
 
     @GetMapping("/api/v1/health")
     public ResponseEntity<Map<String, Object>> healthCheck() {
         log.info("Health check endpoint hit at {}", OffsetDateTime.now());
-        
+
         return ResponseEntity.ok(Map.of(
-            "status", "UP",
-            "message", "Hoi An Backend is awake and ready!",
-            "timestamp", OffsetDateTime.now().toString(),
-            "startTime", START_TIME.toString(),
-            "version", "0.0.1-SNAPSHOT"
-        ));
+                "status", "UP",
+                "message", "Hoi An Backend is awake and ready!",
+                "timestamp", OffsetDateTime.now().toString(),
+                "startTime", START_TIME.toString(),
+                "version", "0.0.1-SNAPSHOT"));
     }
 }
