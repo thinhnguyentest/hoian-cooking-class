@@ -19,4 +19,6 @@
     <include file="db/changelog/migrations/012-add-system-settings.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/013-add-page-metadata.sql" relativeToChangelogFile="false"/>
     <include file="db/changelog/migrations/014-add-page-price.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/015-rename-lantern-slug.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/016-seed-content-images.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>
